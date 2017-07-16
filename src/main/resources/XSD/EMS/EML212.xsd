@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2009 (http://www.altova.com) by hanlixia (EMBRACE) -->
+<xs:schema xmlns="http://www.w3.org/2000/09/xmldsig#" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.w3.org/2000/09/xmldsig#" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="HDE_W3C_Common.xsd"/>
+	<xs:include schemaLocation="Common_ComplexType.xsd"/>
+	<xs:element name="Signature">
+		<xs:annotation>
+			<xs:documentation>xml数字签名根节点</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="SignedInfo"/>
+				<xs:element ref="SignatureValue"/>
+				<xs:element ref="KeyInfo"/>
+				<xs:element name="Object">
+					<xs:annotation>
+						<xs:documentation>业务实体报文</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="Package"/>
+						</xs:sequence>
+						<xs:attribute name="Id" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Package">
+		<xs:annotation>
+			<xs:documentation>业务报文数据节点</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="EnvelopInfo"/>
+				<xs:element ref="DataInfo"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DataInfo">
+		<xs:annotation>
+			<xs:documentation>业务内容</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PocketInfo"/>
+				<xs:element name="BussinessData">
+					<xs:annotation>
+						<xs:documentation>存放业务数据</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="EML212">
+								<xs:annotation>
+									<xs:documentation>手册单耗质疑/磋商回执根节点</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="HdeApprResult" type="HdeApprResult" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>手册单耗质疑回执信息</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="EmlUcnsTqcnNtflBsc" type="EmlUcnsTqcnNtflBsc" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>手册单耗质疑磋商通知书基本</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="EmlUcnsTqcnNtflDt" type="EmlUcnsTqcnNtflDt" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>手册单耗质疑磋商通知书明细</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="EmlUcnsCsttnRecBsc" type="EmlUcnsCsttnRecBsc" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>手册单耗磋商记录基本</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="EmlUcnsCsttnRecDt" type="EmlUcnsCsttnRecDt" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>手册单耗磋商记录明细</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

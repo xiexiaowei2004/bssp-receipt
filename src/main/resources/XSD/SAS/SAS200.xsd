@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2009 (http://www.altova.com) by zhaoziyue (EMBRACE) -->
+<xs:schema xmlns="cn.gov.customs.hde.app.sas" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="cn.gov.customs.hde.app.sas" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:simpleType name="DateTime">
+		<xs:annotation>
+			<xs:documentation>日期时间类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="19"/>
+			<xs:pattern value="([0-9]{4}-(0[1-9]|1[0-2])-[0-3][0-9] [0-2][0-3]:[0-5][0-9]:[0-5][0-9])?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="SAS200">
+		<xs:annotation>
+			<xs:documentation>子报文入库回执</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MsgReceResult" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>子报文入库回执信息</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="resutType">
+								<xs:annotation>
+									<xs:documentation>回执类型</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:length value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="etpsPreentNo">
+								<xs:annotation>
+									<xs:documentation>企业预录入编号</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="64"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="pocketId">
+								<xs:annotation>
+									<xs:documentation>原始报文编号</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="64"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="totalPocketQty">
+								<xs:annotation>
+									<xs:documentation>总包数</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:long">
+										<xs:totalDigits value="19"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="curPocketNo">
+								<xs:annotation>
+									<xs:documentation>当前包序号</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:long">
+										<xs:totalDigits value="19"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="bizNo">
+								<xs:annotation>
+									<xs:documentation>业务编号</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="64"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="manageResult">
+								<xs:annotation>
+									<xs:documentation>处理结果</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:length value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="manageDate" type="DateTime">
+								<xs:annotation>
+									<xs:documentation>处理时间</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="rmk">
+								<xs:annotation>
+									<xs:documentation>备注</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="4000"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

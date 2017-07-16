@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2009 (http://www.altova.com) by zhaoziyue (EMBRACE) -->
+<xs:schema xmlns="cn.gov.customs.hde.app.sas" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="cn.gov.customs.hde.app.sas" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:simpleType name="Date">
+		<xs:annotation>
+			<xs:documentation>日期时间类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+			<xs:pattern value="([0-9]{4}-(0[1-9]|1[0-2])-[0-3][0-9])?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DateTime">
+		<xs:annotation>
+			<xs:documentation>日期时间类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="19"/>
+			<xs:pattern value="([0-9]{4}-(0[1-9]|1[0-2])-[0-3][0-9] [0-2][0-3]:[0-5][0-9]:[0-5][0-9])?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="HdeApprResult">
+		<xs:annotation>
+			<xs:documentation>回执表头</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="etpsPreentNo">
+				<xs:annotation>
+					<xs:documentation>企业预录入编号</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="businessId">
+				<xs:annotation>
+					<xs:documentation>单证编号</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="128"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="tmsCnt">
+				<xs:annotation>
+					<xs:documentation>变更/报核次数</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:long">
+						<xs:totalDigits value="19"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="typecd">
+				<xs:annotation>
+					<xs:documentation>业务类型代码</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="manageResult">
+				<xs:annotation>
+					<xs:documentation>业务类型代码</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="manageDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>处理日期</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rmk">
+				<xs:annotation>
+					<xs:documentation>备注</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SasVehicleBsc">
+		<xs:annotation>
+			<xs:documentation>车辆备案信息</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vehicleNo">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="chgTmsCnt">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:totalDigits value="19"/>
+						<xs:fractionDigits value="0"/>
+						<xs:minExclusive value="-10000000000000000000"/>
+						<xs:maxExclusive value="10000000000000000000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="vehicleTypecd" nillable="true" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="masterCuscd" nillable="true" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="4"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="dclPreentNo" nillable="true" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="18"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="dclTypecd" nillable="true" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="vehicleCusNo" nillable="true" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="etpsno" nillable="true" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="etpsNm" nillable="true" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="512"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="etpsSccd" nillable="true" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="18"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="vehicleWt" nillable="true" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:totalDigits value="19"/>
+						<xs:fractionDigits value="5"/>
+						<xs:minExclusive value="-100000000000000"/>
+						<xs:maxExclusive value="100000000000000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="dclEr" nillable="true" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="256"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="dclTime" type="DateTime" nillable="true" minOccurs="0"/>
+			<xs:element name="putrecEmapvTime" type="DateTime" nillable="true" minOccurs="0"/>
+			<xs:element name="chgEmapvTime" type="DateTime" nillable="true" minOccurs="0"/>
+			<xs:element name="emapvMarkcd" nillable="true" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="stucd" nillable="true" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="rmk" nillable="true" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="512"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="col1" type="xs:string"/>
+			<xs:element name="col2" type="xs:string"/>
+			<xs:element name="col3" type="DateTime"/>
+			<xs:element name="col4" type="xs:double"/>
+			<xs:element name="ownerSystem" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CheckInfo">
+		<xs:annotation>
+			<xs:documentation>检查信息</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="note">
+				<xs:annotation>
+					<xs:documentation>检查信息</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SAS231">
+		<xs:annotation>
+			<xs:documentation>车辆信息备案/变更审核回执</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="HdeApprResult" type="HdeApprResult" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>车辆信息备案/变更审核回执</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="SasVehicleBsc" type="SasVehicleBsc" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>车辆信息明细</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="CheckInfo" type="CheckInfo" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>检查信息</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

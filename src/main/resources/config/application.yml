@@ -1,0 +1,16 @@
+# 默认使用dev(开发者模式)，该属性将默认读取applicable-dev.yml文件
+# 如需动态切换配置，可在命令行执行java -jar xxx.jar --spring.profiles.active=test(切换到测试环境)
+spring:
+  profiles:
+    active: dev
+  #出现错误直接抛出异常
+  mvc:
+    throw-exception-if-no-handler-found: true
+  #不对资源文件建立映射
+  resources:
+    add-mappings: false
+#指定mapper.xml的位置
+#mybatis:
+ # mapper-locations: classpath:/mybatis/**/*Mapper.xml
+  #configuration.mapUnderscoreToCamelCase: true
+  #configuration.useColumnLabel: true

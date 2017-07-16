@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>回执处理监视器</title>
+    <meta http-equiv="refresh" CONTENT="10"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        div {
+            display: inline;
+            height: 95%;
+            width: 33%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            font-size: 13px;
+            float: left;
+            border: 1px solid;
+            text-align: left;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding-left: 2px
+        }
+
+        ul li {
+            float: left;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="div1">
+        <span>文件入库</span>
+        <ul>
+            <li th:each="str : ${msgList1}"><span th:utext="${str}"></span></li>
+        </ul>
+    </div>
+    <div id="div2">
+        <span>简单解析</span>
+        <ul>
+            <li th:each="str : ${msgList2}"><span th:utext="${str}"></span></li>
+        </ul>
+    </div>
+    <div id="div3">
+        <span>详细处理</span>
+        <ul>
+            <li th:each="str : ${msgList3}"><span th:utext="${str}"></span></li>
+        </ul>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="CUSTOM_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread]%logger -%msg%n"/>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <!-- ch.qos.logback.core.rolling.RollingFileAppender 文件日志输出 -->
+    <appender name="intoDbLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/intoDbLog/log.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/intoDbLog/%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${CUSTOM_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <appender name="simpleLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/simpleLog/log.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/simpleLog/%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${CUSTOM_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <appender name="detailLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/detailLog/log.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/detailLog/%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${CUSTOM_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <appender name="allLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/allLog/log.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/allLog/%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${CUSTOM_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 日志级别 -->
+    <logger name="com.powerbridge.bssp.receipt.controller.ReceiptParserIntoDb" additivity="false">
+        <level value="info"/>
+        <level value="error"/>
+        <appender-ref ref="intoDbLog"/>
+    </logger>
+    <logger name="com.powerbridge.bssp.receipt.controller.ReceiptParserSimple" additivity="false">
+        <level value="info"/>
+        <level value="error"/>
+        <appender-ref ref="simpleLog"/>
+    </logger>
+    <logger name="com.powerbridge.bssp.receipt.controller.ReceiptParserDetail" additivity="false">
+        <level value="info"/>
+        <level value="error"/>
+        <appender-ref ref="detailLog"/>
+    </logger>
+    <logger name="org.springframework" additivity="false">
+        <level value="info"/>
+        <level value="error"/>
+        <appender-ref ref="allLog"/>
+    </logger>
+
+</configuration>

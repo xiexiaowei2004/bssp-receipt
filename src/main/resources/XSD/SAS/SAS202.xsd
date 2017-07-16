@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2009 (http://www.altova.com) by zhaoziyue (EMBRACE) -->
+<xs:schema xmlns="cn.gov.customs.hde.app.sas" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="cn.gov.customs.hde.app.sas" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:simpleType name="Date">
+		<xs:annotation>
+			<xs:documentation>日期时间类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+			<xs:pattern value="([0-9]{4}-(0[1-9]|1[0-2])-[0-3][0-9])?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DateTime">
+		<xs:annotation>
+			<xs:documentation>日期时间类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="19"/>
+			<xs:pattern value="([0-9]{4}-(0[1-9]|1[0-2])-[0-3][0-9] [0-2][0-3]:[0-5][0-9]:[0-5][0-9])?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="HdeApprResult">
+		<xs:annotation>
+			<xs:documentation>回执表头</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="etpsPreentNo">
+				<xs:annotation>
+					<xs:documentation>企业预录入编号</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="businessId">
+				<xs:annotation>
+					<xs:documentation>单证编号</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="128"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="tmsCnt">
+				<xs:annotation>
+					<xs:documentation>变更/报核次数</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:long">
+						<xs:totalDigits value="19"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="typecd">
+				<xs:annotation>
+					<xs:documentation>业务类型代码</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="manageResult">
+				<xs:annotation>
+					<xs:documentation>业务类型代码</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="manageDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>处理日期</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rmk">
+				<xs:annotation>
+					<xs:documentation>备注</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SasDclBsc">
+		<xs:annotation>
+			<xs:documentation>申报表表头</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="sasDclNo" type="xs:string"/>
+			<xs:element name="chgTmsCnt" type="xs:long"/>
+			<xs:element name="masterCuscd" type="xs:string"/>
+			<xs:element name="sasDclPreentNo" type="xs:string"/>
+			<xs:element name="dclTypecd" type="xs:string"/>
+			<xs:element name="businessTypecd" type="xs:string"/>
+			<xs:element name="directionTypecd" type="xs:string"/>
+			<xs:element name="areainOriactNo" type="xs:string"/>
+			<xs:element name="areaoutOriactNo" type="xs:string"/>
+			<xs:element name="areainEtpsno" type="xs:string"/>
+			<xs:element name="areainEtpsNm" type="xs:string"/>
+			<xs:element name="areainEtpsSccd" type="xs:string"/>
+			<xs:element name="areaoutEtpsno" type="xs:string"/>
+			<xs:element name="areaoutEtpsNm" type="xs:string"/>
+			<xs:element name="areaoutEtpsSccd" type="xs:string"/>
+			<xs:element name="dpstLevyBlNo" type="xs:string"/>
+			<xs:element name="validTime" type="xs:date"/>
+			<xs:element name="exhibitionPlace" type="xs:string"/>
+			<xs:element name="dclEr" type="xs:string"/>
+			<xs:element name="dclTime" type="DateTime"/>
+			<xs:element name="putrecEmapvTime" type="DateTime"/>
+			<xs:element name="chgEmapvTime" type="DateTime"/>
+			<xs:element name="clsCaseTime" type="DateTime"/>
+			<xs:element name="emapvMarkcd" type="xs:string"/>
+			<xs:element name="dclTbStucd" type="xs:string"/>
+			<xs:element name="rmk" type="xs:string"/>
+			<xs:element name="col1" type="xs:string"/>
+			<xs:element name="col2" type="xs:string"/>
+			<xs:element name="col3" type="DateTime"/>
+			<xs:element name="col4" type="xs:double"/>
+			<xs:element name="ownerSystem" type="xs:string"/>
+			<xs:element name="emapvDescription" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SasDclDt">
+		<xs:annotation>
+			<xs:documentation>申报表表体</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="sasDclNo" type="xs:string"/>
+			<xs:element name="sasDclSeqno" type="xs:long"/>
+			<xs:element name="chgTmsCnt" type="xs:long"/>
+			<xs:element name="mtpckEndprdTypecd" type="xs:string"/>
+			<xs:element name="oriactGdsSeqno" type="xs:long"/>
+			<xs:element name="gdecd" type="xs:string"/>
+			<xs:element name="gdsNm" type="xs:string"/>
+			<xs:element name="gdsSpcfModelDesc" type="xs:string"/>
+			<xs:element name="dclQty" type="xs:double"/>
+			<xs:element name="dclUnitcd" type="xs:string"/>
+			<xs:element name="dclUprcAmt" type="xs:double"/>
+			<xs:element name="dclTotalAmt" type="xs:double"/>
+			<xs:element name="dclCurrcd" type="xs:string"/>
+			<xs:element name="licenceNo" type="xs:string"/>
+			<xs:element name="licenceValidTime" type="Date"/>
+			<xs:element name="actlAreaoutQty" type="xs:double"/>
+			<xs:element name="actlAreainQty" type="xs:double"/>
+			<xs:element name="gdsMarkcd" type="xs:string"/>
+			<xs:element name="gdsRmk" type="xs:string"/>
+			<xs:element name="invtVdedtQty" type="xs:double"/>
+			<xs:element name="rcntVdedtTime" type="DateTime"/>
+			<xs:element name="modfMarkcd" type="xs:string"/>
+			<xs:element name="rmk" type="xs:string"/>
+			<xs:element name="col1" type="xs:string"/>
+			<xs:element name="col2" type="xs:string"/>
+			<xs:element name="col3" type="DateTime"/>
+			<xs:element name="col4" type="xs:double"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SAS202">
+		<xs:annotation>
+			<xs:documentation>业务申报表暂停恢复回执</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="HdeApprResult" type="HdeApprResult" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>申报表暂停恢复回执</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="SasDclBsc" type="SasDclBsc" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>申报表基本</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="SasDclDt" type="SasDclDt" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>申报表明细</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

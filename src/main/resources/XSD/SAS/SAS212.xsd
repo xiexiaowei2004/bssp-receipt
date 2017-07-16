@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2009 (http://www.altova.com) by zhaoziyue (EMBRACE) -->
+<xs:schema xmlns="cn.gov.customs.hde.app.sas" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="cn.gov.customs.hde.app.sas" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:simpleType name="Date">
+		<xs:annotation>
+			<xs:documentation>日期时间类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+			<xs:pattern value="([0-9]{4}-(0[1-9]|1[0-2])-[0-3][0-9])?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DateTime">
+		<xs:annotation>
+			<xs:documentation>日期时间类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="19"/>
+			<xs:pattern value="([0-9]{4}-(0[1-9]|1[0-2])-[0-3][0-9] [0-2][0-3]:[0-5][0-9]:[0-5][0-9])?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="HdeApprResult">
+		<xs:annotation>
+			<xs:documentation>回执表头</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="etpsPreentNo">
+				<xs:annotation>
+					<xs:documentation>企业预录入编号</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="businessId">
+				<xs:annotation>
+					<xs:documentation>单证编号</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="128"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="tmsCnt">
+				<xs:annotation>
+					<xs:documentation>变更/报核次数</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:long">
+						<xs:totalDigits value="19"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="typecd">
+				<xs:annotation>
+					<xs:documentation>业务类型代码</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="manageResult">
+				<xs:annotation>
+					<xs:documentation>业务类型代码</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="manageDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>处理日期</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rmk">
+				<xs:annotation>
+					<xs:documentation>备注</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SasStockBsc">
+		<xs:annotation>
+			<xs:documentation>出入库单表头</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="sasStockNo" type="xs:string"/>
+			<xs:element name="sasStockPreentNo" type="xs:string"/>
+			<xs:element name="dclTypecd" type="xs:string"/>
+			<xs:element name="sasDclNo" type="xs:string"/>
+			<xs:element name="masterCuscd" type="xs:string"/>
+			<xs:element name="stockTypecd" type="xs:string"/>
+			<xs:element name="rltBondInvtNo" type="xs:string"/>
+			<xs:element name="businessTypecd" type="xs:string"/>
+			<xs:element name="centralizedDclTypecd" type="xs:string"/>
+			<xs:element name="rltSasStockNo" type="xs:string"/>
+			<xs:element name="dclEr" type="xs:string"/>
+			<xs:element name="dclTime" type="DateTime"/>
+			<xs:element name="packageQty" type="xs:double"/>
+			<xs:element name="grossWt" type="xs:double"/>
+			<xs:element name="netWt" type="xs:double"/>
+			<xs:element name="packType" type="xs:string"/>
+			<xs:element name="levyBlAmt" type="xs:double"/>
+			<xs:element name="passTypecd" type="xs:string"/>
+			<xs:element name="passportUsedTypecd" type="xs:string"/>
+			<xs:element name="stucd" type="xs:string"/>
+			<xs:element name="emapvMarkcd" type="xs:string"/>
+			<xs:element name="rmk" type="xs:string"/>
+			<xs:element name="col1" type="xs:string"/>
+			<xs:element name="col2" type="xs:string"/>
+			<xs:element name="col3" type="DateTime"/>
+			<xs:element name="col4" type="xs:double"/>
+			<xs:element name="chgTmsCnt" type="xs:double"/>
+			<xs:element name="ownerSystem" type="xs:string"/>
+			<xs:element name="emapvDescription" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SasStockDt">
+		<xs:annotation>
+			<xs:documentation>出入库单表体</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="sasStockNo" type="xs:string"/>
+			<xs:element name="sasStockSeqno" type="xs:long"/>
+			<xs:element name="sasDclSeqno" type="xs:long"/>
+			<xs:element name="oriactGdsSeqno" type="xs:long"/>
+			<xs:element name="gdsMtno" type="xs:string"/>
+			<xs:element name="gdecd" type="xs:string"/>
+			<xs:element name="gdsNm" type="xs:string"/>
+			<xs:element name="gdsSpcfModelDesc" type="xs:string"/>
+			<xs:element name="dclUnitcd" type="xs:string"/>
+			<xs:element name="lawfUnitcd" type="xs:string"/>
+			<xs:element name="secdLawfUnitcd" type="xs:string"/>
+			<xs:element name="natcd" type="xs:string"/>
+			<xs:element name="dclUprcAmt" type="xs:double"/>
+			<xs:element name="dclTotalAmt" type="xs:double"/>
+			<xs:element name="usdStatTotalAmt" type="xs:double"/>
+			<xs:element name="dclCurrcd" type="xs:string"/>
+			<xs:element name="lawfQty" type="xs:double"/>
+			<xs:element name="secdLawfQty" type="xs:double"/>
+			<xs:element name="wtSfVal" type="xs:double"/>
+			<xs:element name="fstSfVal" type="xs:double"/>
+			<xs:element name="secdSfVal" type="xs:double"/>
+			<xs:element name="dclQty" type="xs:double"/>
+			<xs:element name="grossWt" type="xs:double"/>
+			<xs:element name="netWt" type="xs:double"/>
+			<xs:element name="useCd" type="xs:string"/>
+			<xs:element name="lvyrlfModecd" type="xs:string"/>
+			<xs:element name="ucnsVerno" type="xs:string"/>
+			<xs:element name="clyMarkcd" type="xs:string"/>
+			<xs:element name="actlPassQty" type="xs:double"/>
+			<xs:element name="passportUsedQty" type="xs:double"/>
+			<xs:element name="replaceQty" type="xs:double"/>
+			<xs:element name="rltStockSeqno" type="xs:long"/>
+			<xs:element name="rmk" type="xs:string"/>
+			<xs:element name="col1" type="xs:string"/>
+			<xs:element name="col2" type="xs:string"/>
+			<xs:element name="col3" type="DateTime"/>
+			<xs:element name="col4" type="xs:double"/>
+			<xs:element name="chgTmsCnt" type="xs:double"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SAS212">
+		<xs:annotation>
+			<xs:documentation>出入库单审核回执</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="HdeApprResult" type="HdeApprResult" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>出入库单审核回执</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="SasStockBsc" type="SasStockBsc" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>出入库单明细</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="SasStockDt" type="SasStockDt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>出入库单表体</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
